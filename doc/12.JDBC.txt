@@ -1,5 +1,16 @@
 JDBC（Java DataBase Connectivity）Java数据库连接，通过它我们可以连接不同的数据库，执行CURD数据库操作。Java13个规范之一。
 
+    	规范制定者
+	        JDBC
+	         /\
+	        /  \
+     实现   /    \ 学习
+	      /      \
+	     /__ __ __\       
+规范实现者        应用程序
+提供jar包	使用	   开发者
+
+
 JDBC是一系列接口和类的集合：
 	DriverManger类
 	Driver接口
@@ -17,5 +28,41 @@ DiverManeger --> Connecttion --> Statement --> ResultSet
 									|
 									|
 								  数据库
-
+ 数据库      服务端口号  URL
+ sqlserver   1433       jdbc:sqlserver://ip:1433:databaseName=dbName
+ mysql       3306       jdbc:mysql://ip:3306/dbName
+ oracle      1521       jdbc:oracle:thin:@ip:1521:dbName
  
+
+JDBC 
+	JDBC是什么
+	规范（类接口详解）
+		Driver接口：
+			连接数据库的驱动程序类
+			Class.forName使用
+		DriverManager类
+			驱动管理类，得到当前注册的所以驱动的集合
+		Connection接口
+			获取数据库连接
+		Statement接口
+			执行sql语句
+		ResultSet接口
+			查询结果集
+
+	操作
+		1. 添加驱动jar包
+		2. 加载驱动程序
+		3. 获取数据库连接
+		4. 创建statement对象
+		5. 执行sql语句		
+		6. 获得查询结果集	
+		7. 关闭释放资源
+	执行查询
+		executeQuery()方法执行查询
+		ResultSet结果集
+  
+	PreparedStatement
+		预编译的执行速度快
+		执行相同结果的sql语句时使用
+		防止sql注入
+		继承Statement
