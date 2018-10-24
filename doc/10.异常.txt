@@ -1,0 +1,31 @@
+异常的基本知识
+	异常定义：程序编译时和运行时发生的错误称为异常
+	异常处理的目的：保证程序继续运行
+	其他：一个异常就是一个异常类
+	异常的体系结构：
+		Object
+			|--Throwable
+					|--Error:虚拟机错误不需要程序员处理
+					 	|--AWTError
+					    |--ThreadDead
+					|--Exception
+						|--ClassNotFoundException
+						|--RuntimeException
+						|--SQLException 
+
+异常分类
+	Error：一般指虚拟机错误；不处理
+	Exception：
+		编译时异常
+			必须处理，不然程序不能编译
+			除去RuntimeException类的其他所有类
+		运行时异
+			RuntimeException类及其子类
+			重要的异常
+
+异常处理
+	try...catch...finally
+	throw:出现在方法体内；表示抛出某个异常
+	throws:属于方法声明；在参数列表后面；表示方法可能抛出的异常；可以抛出多个异常类；如果是编译时异常调用者必须处理
+
+自定义异常

@@ -1,0 +1,38 @@
+数组缺陷
+	数组定长
+	只能存储本类和子类变量
+
+
+集合
+	将多个元素组成一个单元的对象
+	用于存储，检索，操作和传输数据
+集合框架
+	提供用于管理对象集合的接口和类
+	包括接口，实现和算法
+接口体系结构
+Collection
+	|--List
+	|--Set
+		|--SortedSet
+Map
+ |--SortedMap
+	 
+List
+	|--AbstractList
+		|--Vector：线程安全的，性能比ArrayLIst差
+		|--ArrayList
+		|--AbstractSequentialList
+			|--LinkedList：LinkedList的内部实现是链表，适合于需要频发进行插入和删除操作
+
+迭代器Iterator，for循环，foreach循环
+
+Map
+    |--SortedMap
+    		|--TreeMap
+    |--AbstractMap
+    		|--HashMap：线程非安全，允许null作为key或者value
+    		|--HashTable：线程安全，HashTable不允许null作为key或者value
+
+集合元素排序
+	Comparable接口 compareTo方法
+	Comparator接口 compare方法

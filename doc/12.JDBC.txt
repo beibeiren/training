@@ -1,0 +1,21 @@
+JDBC（Java DataBase Connectivity）Java数据库连接，通过它我们可以连接不同的数据库，执行CURD数据库操作。Java13个规范之一。
+
+JDBC是一系列接口和类的集合：
+	DriverManger类
+	Driver接口
+	Connection接口
+	Statement接口
+		|-- PreparedStetment接口
+		|-- CallableStatement接口
+	ResultSet接口
+
+DiverManeger --> Connecttion --> Statement --> ResultSet
+					|               |				|
+					|			 SQL|    		数据	|
+					|   建立连接		|				|
+					|------------>驱动程序-----------|
+									|
+									|
+								  数据库
+
+ 

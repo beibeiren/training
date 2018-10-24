@@ -1,0 +1,49 @@
+包与Java常用类
+	包
+		包的定义
+			管理类
+			为封装提供支持
+			类似于文件夹
+			package定义包
+			import导包
+		包的命名规范
+			反写的企业域名.功能名.模块名
+		Java常用包：
+			java.lang：java核心类库，Java默认包不需要导入
+			java.io：IO
+			java.util：常用工具类
+			java.sql:JDBC相关类
+	包装类
+		什么是包装类
+			对应基本数据类型，全部声明在java.long包中
+			byte -- Byte
+			boolan -- Boolean
+			short -- Short
+			char -- Character
+			int -- Integer
+			long -- Long
+			float -- Float
+			double -- Double
+		自动拆装箱
+		包装类常用方法
+			Character
+				isDigit()
+				isLetter()
+				isLowerCase()
+				isUpperCase()
+		包装类和String类型转换
+			eg：Integer.pareseInt(str)
+			    Integer.valueOf(str)
+	String
+		比较
+			==方式 ： 比较内存地址
+			equals方式：比较值
+		字符串池
+		String a = null; String a;
+		String b = " ";
+		String c = "";
+	StringBuffer类
+		长度可变
+		线程安全
+	StringBuilder类
+	    线程非安全
