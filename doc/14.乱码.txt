@@ -1,0 +1,17 @@
+中文编码格式：GBK
+国际编码格式：UTF-8
+默认编码格式：ISO-8859-1
+
+// 客户端向服务器请求时，只有post请求有效
+request.setCharacterEncoding("gbk");
+
+//JSP 告诉tomcat容器使用GBK编码格式（服务器端）
+<% page language="java" contentType="text/html;charset="GBK" %>
+
+// 告诉浏览器使用GBK编码格式（客户端）
+<meta http-equiv="Content-Type" content="text/html" charset="GBK" > 
+
+// 告诉tomcat不使用默认的编码格式应答客户端，PrintWriter out.write()时使用 （项目中不会使用）
+response.setContentType("text/html;charset=gbk");
+
+MVC介绍

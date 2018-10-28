@@ -1,0 +1,106 @@
+B/S和C/S
+	动态网站与静态网站
+		交互性，自动更新，因时因人而变
+	开发B/S的技术	
+		CGI--APS--PHP--JSP/Servlet--ASP.NET
+什么是web服务器
+	webapp部署在web服务器中
+	web服务器对app运行提供支持
+Tomcat的简单配置
+	1. 配置端口号：conf目录下的server.xml
+	2. 添加管理账户：conf目录下的tomcat-users.xml
+		<role rolename="admin" />
+		<user username="admin" password="admin" roles="admin" />
+	3. 所有的应用程序都放在webapps下
+	4. work文件夹中存放临时文件，包括jsp转移后生成的servlet源代码，编译后生成的class类文件
+	5. 启动tomcat bin目录下的startup.bat, 停止shutdown.bat
+JSP/Servlet定义
+	JSP/Servlet是sun公司制定的用Java开发web应用程序的规范
+	是用Java开发webapp的技术
+	Servlet是一个可以部署到web服务器中，供客户端访问，处理客户端请求的Java类
+	JSP本质是Servlet
+其他实现JSP/Servlet规范的容器简介
+	WebLogic, JBoss，Tomcat
+    IIS, Apache, Nignx
+第一个servlet
+	三步骤
+		继承Httpsevlet接口 --> 重写doGet，doPost方法 --> 配置web.xml
+	web.xml配置
+		<servlet> 
+			<servlet-name>
+			<servlet-class>
+			<init-param>
+				<param-name>
+				<param-value>
+			<load-on-startup>	
+		<servlet-mapping>
+			<servlet-name>
+			<url-pattern>
+	访问路径查找过程
+		http://ip:端口/程序目录/url-pattern --> web.xml --> java类
+	常见错误代码
+		404：找不到页面
+		500：程序内部异常
+
+
+Servlet详解
+	Servlet继承结构
+		Servlet（interface）           -- init() service() destroy() 三个方法
+		GenericServlet(Abstract class) -- 与协议无关的servlet
+		HttpServlet(Abstract class)    -- 实现了http协议的Servlet
+		自定义Servlet                   -- 一般重写doGet与doPost方法 
+	Servlet生命周期
+		实例化    -- Servlet创建Servlet的实列，分配堆内存
+		初始化    -- init（）调用一次，一般第一次访问Servlet时调用
+					<load-on-startup>1</load-on-startup> 0,1,2,3 ---web应用程序启动顺序
+		服务      -- service（）调用多次每次访问时调用
+		销毁      -- destory（）调用一次，应用程序关闭时调用
+		不可用    -- 销毁实例并标记为垃圾回收集 
+	ServletConfig
+		封装一个Servlet节点的信息
+		<init-param>
+			<param-name>
+			<param-value>
+		getInitParameter(paramName);
+		getServletName();
+		getInitParameterNames();
+	Request对象详解
+		本质上是接口
+		与请求参数有关的三个方法
+			String nameValue = request.getParameter("name");
+			String[] values = request.getParameterValues();
+			String[] names = request.getParameterNames();
+ 		request.getContextPath():获取web应用程序名称
+		request.getServletPath():如果好请求的时servlet，那么返回该setvlet的url-pattern，如果是jsp，返回jsp文件名
+		request.getRequestURI():请求的全部路径，绝对路径
+		request.getRequestURI() = request.getContextPath() + request.getServletPath();
+		request.getMethod():请求类别
+		request.getRemotePort():客户端请求端口
+		request.getScheme():http
+		request.getServerName():localhost
+		reqeust.getServerPosr():8080
+		request.getRemoteAddr(): ip地址
+		request.getRequestURL(): http://localhost:8080/proName/servletName?params
+		request.getHeader("User-Agent"):获取客户端浏览器信息
+		request.getRequestDispatcher("<url-pattern>"):得到请求转发对象
+		parameter和attribute的区别
+			parameter:客户端请求参数，
+			attribute:服务器端放入的参数
+			parameter:数据是只读的
+			attribute：可以读写删除 
+			getParameter()返回字符串
+			getAttribute（）返回的是Object
+	请求转发与重定向
+		跳转服务，传递数据服务
+		请求转发
+			RequestDispatch rd = request.getRequestDispatcher("/servleturl")
+			rd.forward(request, response);
+		重定向
+			response.sendRedirect(contenxPath + '/servleturl');
+		区别
+			请求转发可以传递数据（数据不会丢失），重定向不能传递数据（数据会丢失）
+			请求转发地址栏url路径不变，重定向url路径改变
+			请求转发后面调用方法类别与前面相同，而重定向全部会变成get请求，与之前没有关系
+			请求转发时一次请求，重定向时多次请求
+				
+	通信录系统开发
