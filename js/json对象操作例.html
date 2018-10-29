@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 页面元素加载完成后执行
+		window.onload = function() { 
+			var text = '{ "abc" : [' +
+		    '{ "name":"Runoob" , "url":"www.runoob.com" },' +
+		    '{ "name":"Google" , "url":"www.google.com" },' +
+		    '{ "name":"Taobao" , "url":"www.taobao.com" } ]}';
+		    console.log(text);
+		    var json = JSON.parse(text);
+		    console.log(json);
+		    var name = json.abc[0].name;
+		    console.log(name);
+		    document.getElementById("nameId").innerHTML = name
+		}
+			
+	</script>
+</head>
+<body>
+	<p id="nameId"></p>
+	
+</body>
+</html>

@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 public class TestResultSet {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Connection conn = null;
 		Statement stat = null;
@@ -28,11 +29,14 @@ public class TestResultSet {
 			// 4. 获得查询结果
 			rs = stat.executeQuery(sql);
 			while (rs.next()) {// 判断是否有下一行，如果有移动到下一行
-				// 在结果集中通过字段名获取数据，数据类型和数据库中数据类型保持一致
+				// 在结果集中通过字段名获取数据，数据类型和数据库中数据类型保持一致(通过字段名获取)
 				Integer id = rs.getInt("id");  
 				String name = rs.getString("name");
 				System.out.println("id=" + id + ", name=" + name);
-				// 在结果集中也可以通过下标获取数据，与数组和集合不同，JDBC的下标是是从1开始
+			}
+			rs = stat.executeQuery(sql);
+			while (rs.next()) {// 判断是否有下一行，如果有移动到下一行
+				// 在结果集中也可以通过下标获取数据，与数组和集合不同，JDBC的下标是是从1开始(通过下标获取)
 				int i = 1;
 				Integer id2 = rs.getInt(i++);  
 				String name2 = rs.getString(i++);
