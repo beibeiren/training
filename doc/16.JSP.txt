@@ -1,1 +1,75 @@
-16.JSP.txt
+什么是JSP
+	JSP（Java Server Page）：sun制定的用java编写web应用程序的规范，技术，建立在servlet规范之上
+JSP运行原理
+	首次访问，JSP首先转译为Java类
+	Java类编译为class文件
+JSP组成
+	注释
+		html注释：<!-- 客户端可见 -->
+		JSP注释：<%-- 容器忽略 --%>
+		Java注释：servlet可见
+	模板：控制整个页面的显示风格，美工关心
+	元素：能为JSP容器所识别的标记
+		脚本元素
+		    <%=表达式%>（同<%out.print(表达式);%>）除去表达式，语法要求每句后面有分号
+			<% java code %> 声明变量是局部变量
+			<%!变量或方法%>  声明变量是全局变量
+		指令元素
+			page，include，taglib
+		动作元素
+			以前的重点，现在了解
+JSP内置对象
+	脚本元素中使用
+	JSP隐含对象，隐士对象，内置对象
+	不需要使用者声明创建，由容器维护和管理
+	全部为JSP保留关键字
+	常见内置对象
+		输入输出对象:request, response, out
+		作用域通信对象:session, application, pageContext
+		Servlet对象:page, config
+		错误对象:exception
+			<error-page>
+				<error-code>
+				<exception-type>
+				<location> errorPage/isErrorPage
+			<welcome-file-list>
+				<welcome-file>
+JSP指令
+	格式：<%@ 指令名称 属性1="属性值1" 属性2="属性值2" ... %>
+	语法：指令是以<%@开始，以%>终止 
+	page指令
+		在JSP中的任何位置，以任何顺序，一个页面可以包含任意数量的page指令
+		除了import，任何的属性值对只能出现一次
+		<%@page 属性1="属性值1" 属性2="属性值2" ... %>
+		page指令属性
+			language     定义要使用的脚本语言
+			import		 将包和类导入Scriptlet
+			buffer       设置用来存储客户端请求的缓冲区的大小
+			errorPage    定义处理异常的JSP页面
+			isErrorPage  表示当前页面能否作为错误处理页面
+			contentType  制定页面格式和所应用的字符集
+	include指令
+		用于在运行时将html文件或JSP页面嵌入到另一个JSP页面
+		<%@include file="文件名" %>
+		页面不能定义相同名称变量除去import属性，其他属性值要一致
+	taglib
+
+JSP动作（了解）	
+	<jsp:useBean id="student" class="com.training.Student" scope="session" />
+		type：声明类型
+		class：创建类型
+		id：  变量名称
+		scope： 范围，默认是page
+		相当于Student student = new Studetn();
+	<jsp:setProperty property="id" name="student" value="2" />
+		相当于student.setId(2);
+	<jsp:getProperty property="id" name="student" />
+		相当于student.getId();
+	<jsp:forward page="xxx.jsp" />
+		相当于request.getRequestDispatcher("xxx.jsp").forward(request,response);
+	<jsp:include page="xxx.jsp">
+		<jsp:param value="Tom" name="name"/>
+	</jsp:include>	
+	include指令和include动作的区别
+		动作可以传参，指令不能传参数
+		动作动态包含（编译后的java类不包含），指令静态包含（编译后的java类包含）
