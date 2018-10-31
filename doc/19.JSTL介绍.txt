@@ -1,0 +1,10 @@
+JSTL介绍
+	JavaServer Pages Standard Tag Library JSP标准标签函数库
+	与EL配合使用代替JSP页面中的脚本元素与动作元素
+	组成
+		核心标签库
+			核心标签库的重点时完成流程控制
+		I8N格式标签库
+		SQL标签库
+		XML标签库
+		函数标签库

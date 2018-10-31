@@ -1,0 +1,79 @@
+EL简介
+	Expression Language表达式语言
+	前生：本为（JSP标准标签库）一部分
+	今世：JSP2.0起独立规范
+	重要：JSF也将其纳入
+作用
+	EL主要做输出显示
+	与JSTL代替JSP页面中的脚本元素与动作元素
+	语法：${EL语言}
+禁用EL
+	<%@ page isELIgnored = "true" %>
+EL内置对象
+	pageContext
+		pageScope
+		requestScope
+		sessionScope
+		applicationScope
+	param
+	paramValues
+	initParam
+	cookie
+	header
+	headerValues
+
+重要区别
+	<%= %>和out.print()打印null时，显示为null
+	EL表达式显示null，不显示
+EL表达式作用范围（pagescope，requestScope，sessionScope，applicationScope可以省略，不推荐）
+范例                          说明  
+${pageScope.username}         取出page范围内的username变量
+${requestScope.username}      取出request范围内的username变量
+${sessionScope.username}      取出session范围内的username变量
+${applicationScope.username}  取出application范围内的username变量
+表达式						               说明
+${pageContext.request.queryString}         请求参数字符串
+${pageContext.request.requestURL}          请求URL不包括参数字符串
+${pageContext.request.contextPath}		   服务的webApplication的名称
+${pageContext.request.method}			   get/post
+${pageContext.request.protocol}            http
+${pageContext.request.remoteUser}          取得用户名称
+${pageContext.request.remoteAddr}          取得用户IP地址
+${pageContext.servletContext.serverInfo}   取得主机端的服务信息
+${pageContext.session.new}                 判断session是否为新的
+${pageContext.session.id}                  取得sessionId
+
+EL逻辑运算符
+    逻辑运算符  范例                     返回结果
+	&&/and     ${aa && bb (aa and bb)} true/false
+	||/or      ${aa || bb (aa or bb)}  true/false
+	!/not      ${!aa (not aa)}         true/false
+    empty      ${empty param.name}     判断是否为null
+    ${A ? B : C}  三元运算符
+
+要点
+	四个对象都是用来获取attribute属性中的数值
+	当只写变量名称，不写范围时，将按照范围从小到大的顺序查找，失败返回null
+	如果attribute中存储的时标准的JavaBean，可以继续查找Bean中属性
+
+EL运算符
+	EL算术运算符
+		+
+		-
+		*
+		/或div
+		%或mod
+	EL关系运算符
+		==或eq
+		!=或ne
+		<或lt
+		>或gt
+		<=或le
+		>=或ge
+	EL逻辑运算符
+		$$或and
+		||或or
+		！或not
+	其他运算符
+		empty
+		三元运算符

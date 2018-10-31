@@ -1,0 +1,42 @@
+过滤器的定义与实现
+过滤器链
+过滤器应用
+	中文乱码处理
+	验证用户登录
+	访问地址过滤
+	网站logo过滤
+扩展与复习：适配器模式，AOP与拦截器
+
+过滤器
+	过滤器是在web应用程序中，在请求前和相应后添加新功能的组件
+
+	Client  -------->  Filter -------> Resource
+			<--------         <-------
+	过滤器实现
+		1. 实现Filter接口，实现init(),doFilter(), destroy()三个方法
+		2. web.xml配置
+			<filter>
+				<filter-name>
+				<filter-class>
+			<filter-mapping>
+				<filter-name>
+				<url-pattern>
+	过滤器的生命周期
+		实例化 --- Servlet容器创建过滤器的实例
+		初始化 --- 该容器调用init()方法
+		过滤   --- 如果符合过滤规则，则容器调用doFilter()方法
+		销毁   --- 销毁实例之前调用destory()方法
+		不可用 --- 销毁实例并标记为垃圾收集
+	中文乱码处理案例
+	FilterConfig
+		getFilterName()
+		getInitParameter()
+		getInitParameterNames()
+		getServletContext()
+过滤器链
+	Client  -------->  Filter -------> Filter -------> Filter -------> Resource
+			<--------         <-------        <-------        <-------
+过滤器案例
+	   适配器模式应用
+	     大多数情况只需要重写doFilter方法
+	     使用适配器模式解决
