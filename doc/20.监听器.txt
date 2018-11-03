@@ -1,0 +1,19 @@
+监听器Listener
+	监听器的定义与作用
+		监听器在application，session，request三个对象创建消亡获知往其中添加修改删除属性时自动执行代码功能组件
+		servletContextListener接口 ： 监听ServletContext对象的创建和消亡
+		ServletContextAttributeListener接口 ： 
+	监听器的分类
+		servletContextListener接口 ： 监听application对象
+			创建ServletContext对象时，调用contextInitialized(ServletContextEvent sce);
+			销毁ServletContext对象时，调用contextDestoryed(ServletContextEvent sce);
+		ServletContextAttributeListener接口		
+		HttpSessionListener接口：监听session对象。
+			创建session时，调用sessionCreated(HttpSessionEvent se);
+			销毁session时，调用sessionDestroyed(HttpSessionEvent se);
+		HttpSessionAttributeListener接口
+			attributeAdded(HttpSessionBindingEvent se);
+			attributeRemoved(HttpSessionBindingEvent se);
+			attributeReplaced(HttpSessionBindingEvent se);
+		ServletRequestListener接口
+		ServletRequestAttributeListener接口

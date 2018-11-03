@@ -8,3 +8,17 @@ JSTL介绍
 		SQL标签库
 		XML标签库
 		函数标签库
+
+	1. 定义变量: <c:set var="name" value="Tom" />
+	2. 输出变量：<c:out value="${name}" />
+	3. 删除变量：<c:remove name="name" />
+	4. if判断  :<c:if test="${表达式}" var="result">
+	5. 	<c:choose>
+			<c:when></c:when>
+			<c:otherwise></c:otherwise>
+		</c:choose>
+	6. foreach循环： 
+		<c:forEach begin="0" end="10" varStatus="status" step="2">
+		</c:forEach>
+		<c:forEach items="${list}" var="stu" varStatus="status">
+		</c:forEach>
