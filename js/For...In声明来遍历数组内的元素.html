@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+	
+<p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
+<button onclick="myFunction()">点击这里</button>
+<p id="demo"></p>
+<script>
+function myFunction(){
+	// var x ;
+	var txt=""; 
+	var person={ // person是对象
+		fname:"Bill", // key(属性): value（值）
+		lname:"Gates",
+		age:56
+	}; 
+	for (var x in person){
+		txt += person[x]; // txt = txt + person[x];
+		alert('x=' + x + ', person[x]=' + person[x] + ',txt=' + txt);
+	}
+	document.getElementById("demo").innerHTML=txt;
+	var ll = "John".constructor;
+	alert(ll);
+}
+</script>
+	
+</body>
+</html>

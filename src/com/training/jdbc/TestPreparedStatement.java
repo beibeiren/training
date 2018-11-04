@@ -2,33 +2,36 @@ package com.training.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-public class TestSqlServerJdbc {
+public class TestPreparedStatement {
 
 	public static void main(String[] args) {
 		try {
 			// 1. 加载数据库驱动
-			//    forName是静态方法，把把驱动程序加载到内存中，把当前加载的驱动程序自动注册到DriverManager中。
-			//    DriverManager是JDBC规范中唯一的一个类
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			System.out.println("数据库驱动加载成功");
 			// 2. 获取数据库连接
-			// 		SSCM --> tcp/ipを有効にする -- service restart
-			// 		properties --> security mode --> SQL Server and Windows Authentication mode
 			String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=training";
 			String username = "root";
 			String password = "root";
 			Connection conn = DriverManager.getConnection(url, username, password);
 			System.out.println("获取数据库连接成功");
 			// 3. 创建Statement用于执行sql语句
-			Statement stat = conn.createStatement();
 			String insertSql = "insert into student "
-					+ "(id, name) values(3, 'Karl')";
-			String updateSql = "update student set name = 'Isabella' where id = 3";
-			String deleteSql = "delete from student where id =1";
-			int row = stat.executeUpdate(deleteSql);
+					+ "(id, name) values(?, ?)";
+			String updateSql = "update student set name = ? where id = ?";
+			String deleteSql = "delete from student where id =?";
+			PreparedStatement stat = conn.prepareStatement(deleteSql);
+//			stat.setString(1, "Carry2");
+//			stat.setInt(2, 2);
+//			int row = stat.executeUpdate();
+//			stat.setString(1, "Carry3");
+//			stat.setInt(2, 3);
+//			stat.executeUpdate();
+			stat.setInt(1, 4);
+			int row = stat.executeUpdate();
 			if (row == 1) {
 				System.out.println("新增数据成功");
 			}else {
@@ -42,6 +45,7 @@ public class TestSqlServerJdbc {
 			e.printStackTrace();
 		}
 		System.out.println("Good bye!");
+
 	}
 
 }

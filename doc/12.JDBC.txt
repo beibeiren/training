@@ -29,7 +29,7 @@ DiverManeger --> Connecttion --> Statement --> ResultSet
 									|
 								  数据库
  数据库      服务端口号  URL
- sqlserver   1433       jdbc:sqlserver://ip:1433:databaseName=dbName
+ sqlserver   1433       jdbc:sqlserver://ip:1433;databaseName=dbName
  mysql       3306       jdbc:mysql://ip:3306/dbName
  oracle      1521       jdbc:oracle:thin:@ip:1521:dbName
  
@@ -63,6 +63,9 @@ JDBC
   
 	PreparedStatement
 		预编译的执行速度快
-		执行相同结果的sql语句时使用
+		执行相同结构的sql语句时使用
 		防止sql注入
 		继承Statement
+
+
+select  * from user where username="tom" and password = "123 or 1=1";
